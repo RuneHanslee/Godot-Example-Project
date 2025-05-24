@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=4 uid="uid://d0m5fibyd57ci"]
+
+[ext_resource type="PackedScene" uid="uid://cgry5kl101jwh" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://blhfmtxldrjls" path="res://Art/tiles.aseprite" id="2_bo1nx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8gbba"]
+texture = ExtResource("2_bo1nx")
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, -8, 8, -8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, -8, -8)
+
+[sub_resource type="TileSet" id="TileSet_jjgbg"]
+physics_layer_0/collision_layer = 128
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_8gbba")
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+walk_speed = 2200.0
+jump_length = 0.1
+jump_height = 200.0
+gravity = 900.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4.8, 4.8)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD8/wMAAAACAAEAAAD9/wMAAAABAAAAAAD+/wMAAAABAAAAAAD//wMAAAABAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAAFAAIAAAACAAAAAAAHAAIAAAADAAEAAAAGAAIAAAABAAAAAAAGAAEAAAACAAAAAAAHAAEAAAADAAAAAAD9/wIAAAADAAAAAAD8/wEAAAADAAAAAAD7/wAAAAADAAAAAAD8/wIAAAABAAAAAAD7/wIAAAACAAEAAAD6/wEAAAACAAEAAAD7/wEAAAABAAAAAAD6/wAAAAABAAAAAAD5/wAAAAABAAAAAAD4/wAAAAABAAAAAAD3/wAAAAABAAAAAAAGAAMAAAADAAEAAAAFAAMAAAABAAAAAAAEAAMAAAABAAAAAAADAAMAAAABAAAAAAACAAMAAAABAAAAAAACAP//AAABAAAAAAADAP//AAADAAAAAAADAAAAAAADAAEAAAABAP//AAACAAAAAAABAAAAAAACAAEAAAACAAAAAAABAAAAAAD1/wMAAAABAAAAAAD2/wMAAAABAAAAAAD3/wMAAAABAAAAAAD4/wMAAAADAAAAAAD4/wQAAAABAAAAAAD5/wQAAAABAAAAAAD6/wQAAAABAAAAAAD7/wQAAAABAAAAAAD8/wQAAAABAAAAAAD9/wQAAAABAAAAAAD3/wQAAAACAAEAAAD+/wQAAAADAAEAAAD0/wMAAAACAAEAAAD0/wIAAAABAAAAAAD0/wEAAAABAAAAAAD0/wAAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_jjgbg")

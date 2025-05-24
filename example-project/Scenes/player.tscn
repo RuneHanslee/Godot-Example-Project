@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgry5kl101jwh"]
+
+[ext_resource type="Script" uid="uid://bn0mhkjynar0x" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="SpriteFrames" uid="uid://c7fl534ad8ahq" path="res://Art/player.aseprite" id="1_v0iea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
+size = Vector2(14, 14)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 128
+floor_snap_length = 2.0
+script = ExtResource("1_cvnsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f60y1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_v0iea")
+animation = &"Idle"
+frame_progress = 0.370955
