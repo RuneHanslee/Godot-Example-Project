@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		player.velocity += Vector2(cos(rot), sin(rot)) * speed * delta
 		player.remove_gravity = true
 	
-
+# Signals
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	in_player = true
@@ -42,4 +42,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	in_player = false
+	player.remove_gravity = false
 	#player.velocity *= 1.2

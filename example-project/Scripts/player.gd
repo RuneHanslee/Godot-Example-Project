@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 class_name Player
 
 # Export Variables
@@ -9,15 +10,20 @@ class_name Player
 @export var jump_per_length := 1500.0
 @export var jump_height := 180.0
 @export var gravity := 900.0
+@export var camera : Camera2D
 
 # Onready Variables
 
+@onready var gui := %GUI
 @onready var jumpsfx := $SFX/Jump
 @onready var floorsfx := $SFX/Floor
+@onready var deathsfx := $SFX/Playerdeath
 @onready var sprite := $AnimatedSprite2D
+@onready var animation_player := $AnimationPlayer
 
 # Variables
 
+var dead := false
 var remove_gravity := false
 var can_jump := false
 var x_input := 0
@@ -46,7 +52,7 @@ func movement(delta: float):
 	if can_jump && Input.is_action_just_pressed("Jump"): # Initializes Jump
 		jump_left = jump_length
 		velocity.y -= jump_height
-	remove_gravity = false
+	
 	
 
 func do_animations():
@@ -71,6 +77,12 @@ func do_squish_physics(delta):
 	squish_physics+=squish_velocity
 	sprite.scale = squish_physics
 
+func respawn():
+	position = Vector2(0,0)
+	camera.position = position
+	dead = false
+	gui.animation_player.play("fade_in")
+
 # Process
 
 func _process(delta: float) -> void:
@@ -80,7 +92,21 @@ func _process(delta: float) -> void:
 	elif x_input == -1:
 		sprite.flip_h = true
 	can_jump = is_on_floor()
-	movement(delta)
-	move_and_slide()
-	do_animations()
-	do_squish_physics(delta)
+	if !dead:
+		movement(delta)
+		move_and_slide()
+		do_animations()
+		do_squish_physics(delta)
+
+# Signals
+
+func _on_death_body_entered(body: Node2D) -> void:
+	dead = true
+	deathsfx.play()
+	animation_player.play("death")
+	gui.animation_player.play("fade_out")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "death":
+		respawn()

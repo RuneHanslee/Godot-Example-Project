@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgry5kl101jwh"]
+[gd_scene load_steps=9 format=3 uid="uid://cgry5kl101jwh"]
 
 [ext_resource type="Script" uid="uid://bn0mhkjynar0x" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="SpriteFrames" uid="uid://c7fl534ad8ahq" path="res://Art/player.aseprite" id="1_v0iea"]
-[ext_resource type="AudioStream" uid="uid://4ko8i68vauet" path="res://Audio/SFX/playerdeath.sfxr" id="3_fkybt"]
 [ext_resource type="AudioStream" uid="uid://lb2jq2b7g157" path="res://Audio/SFX/jump.mp3" id="3_vgqql"]
 [ext_resource type="AudioStream" uid="uid://bkcfm6jcixhf0" path="res://Audio/SFX/floor.sfxr" id="4_fkybt"]
 
@@ -12,59 +11,11 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
 size = Vector2(14, 14)
 
-[sub_resource type="Animation" id="Animation_fkybt"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="Animation" id="Animation_vgqql"]
 resource_name = "death"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.69)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.69)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fkybt"]
 _data = {
-&"RESET": SubResource("Animation_fkybt"),
 &"death": SubResource("Animation_vgqql")
 }
 
@@ -73,6 +24,12 @@ collision_layer = 8
 collision_mask = 128
 floor_snap_length = 2.0
 script = ExtResource("1_cvnsp")
+walk_speed = null
+friction = null
+jump_length = null
+jump_per_length = null
+jump_height = null
+gravity = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f60y1")
@@ -85,11 +42,6 @@ frame_progress = 0.370955
 offset = Vector2(0, -7)
 
 [node name="SFX" type="Node" parent="."]
-
-[node name="Playerdeath" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3_fkybt")
-volume_db = -2.01
-pitch_scale = 1.5
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_vgqql")

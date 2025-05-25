@@ -27,6 +27,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdfxr/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://b3jregqyte4kl"
+
 [input]
 
 Left={
@@ -50,6 +54,7 @@ Jump={
 2d_physics/layer_4="Player"
 2d_physics/layer_8="Solid"
 2d_physics/layer_12="Gravity Field"
+2d_physics/layer_16="Player Kill"
 
 [rendering]
 
