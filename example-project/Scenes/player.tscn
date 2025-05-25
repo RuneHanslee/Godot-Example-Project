@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgry5kl101jwh"]
+[gd_scene load_steps=6 format=3 uid="uid://cgry5kl101jwh"]
 
 [ext_resource type="Script" uid="uid://bn0mhkjynar0x" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="SpriteFrames" uid="uid://c7fl534ad8ahq" path="res://Art/player.aseprite" id="1_v0iea"]
+[ext_resource type="AudioStream" uid="uid://lb2jq2b7g157" path="res://Audio/SFX/jump.mp3" id="3_vgqql"]
+[ext_resource type="AudioStream" uid="uid://bkcfm6jcixhf0" path="res://Audio/SFX/floor.sfxr" id="4_fkybt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(14, 14)
@@ -16,6 +18,19 @@ script = ExtResource("1_cvnsp")
 shape = SubResource("RectangleShape2D_f60y1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 7)
 sprite_frames = ExtResource("1_v0iea")
 animation = &"Idle"
 frame_progress = 0.370955
+offset = Vector2(0, -7)
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_vgqql")
+volume_db = -13.875
+
+[node name="Floor" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_fkybt")
+volume_db = -9.085
+pitch_scale = 0.81

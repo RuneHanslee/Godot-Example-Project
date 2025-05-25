@@ -15,6 +15,14 @@ run/main_scene="uid://d0m5fibyd57ci"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Art/icon.svg"
 
+[audio]
+
+driver/mix_rate=48000
+
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdfxr/plugin.cfg")
@@ -41,6 +49,7 @@ Jump={
 
 2d_physics/layer_4="Player"
 2d_physics/layer_8="Solid"
+2d_physics/layer_12="Gravity Field"
 
 [rendering]
 
