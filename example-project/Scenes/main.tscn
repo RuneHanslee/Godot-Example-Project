@@ -312,13 +312,13 @@ tile_set = SubResource("TileSet_jjgbg")
 metadata/_edit_lock_ = true
 
 [node name="Coin2" parent="Coins" instance=ExtResource("7_6bp64")]
-position = Vector2(284, -22)
+position = Vector2(281, -15)
 
 [node name="Coin" parent="Coins" instance=ExtResource("7_6bp64")]
-position = Vector2(252, -22)
+position = Vector2(249, -15)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("7_6bp64")]
-position = Vector2(316, -22)
+position = Vector2(313, -15)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("7_6bp64")]
 position = Vector2(-78, -34)
@@ -333,10 +333,10 @@ position = Vector2(-114, -34)
 position = Vector2(-96, -16)
 
 [node name="Coin8" parent="Coins" instance=ExtResource("7_6bp64")]
-position = Vector2(647, -115)
+position = Vector2(647, -111)
 
 [node name="Coin9" parent="Coins" instance=ExtResource("7_6bp64")]
-position = Vector2(676, 48)
+position = Vector2(680, 50)
 
 [node name="Coin10" parent="Coins" instance=ExtResource("7_6bp64")]
 position = Vector2(448, -124)

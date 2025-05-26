@@ -88,16 +88,16 @@ offset = Vector2(0, -7)
 
 [node name="Playerdeath" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_fkybt")
-volume_db = -2.01
+volume_db = -19.46
 pitch_scale = 1.5
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_vgqql")
-volume_db = -13.875
+volume_db = -21.915
 
 [node name="Floor" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_fkybt")
-volume_db = -9.085
+volume_db = -12.96
 pitch_scale = 0.81
 
 [node name="Areas" type="Node2D" parent="."]
